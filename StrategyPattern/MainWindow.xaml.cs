@@ -61,29 +61,29 @@ namespace StrategyPattern
 
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
-            IImageSaveStrategy saveStrategy;
+            ImageConverter imageConverter = new ImageConverter();
             string extension = TypesCombobox.SelectedItem as string;
             switch (extension)
             {
                 case "pdf":
-                    saveStrategy = new PdfStrategy();
+                    imageConverter.SetStrategy(new PdfStrategy());
                     break;
                 case "jpg":
-                    saveStrategy = new JpgStrategy();
+                    imageConverter.SetStrategy(new JpgStrategy());
                     break;
                 case "png":
-                    saveStrategy = new PngStrategy();
+                    imageConverter.SetStrategy(new PngStrategy());
                     break;
                 case "gif":
-                    saveStrategy = new GifStrategy();
+                    imageConverter.SetStrategy(new GifStrategy());
                     break;
                 case "bmp":
-                    saveStrategy = new BmpStrategy();
+                    imageConverter.SetStrategy(new BmpStrategy());
                     break;
                 default:
                     throw new ArgumentNullException(extension);
             }
-            saveStrategy.SaveFile(((BitmapImage)mainImage.Source).UriSource.AbsolutePath);
+            imageConverter.ConvertAndSaveImage(((BitmapImage)mainImage.Source).UriSource.AbsolutePath);
         }
 
 

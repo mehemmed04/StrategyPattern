@@ -79,6 +79,7 @@
     <Compile Include="ImageStrategy\BmpStrategy.cs" />
     <Compile Include="ImageStrategy\GifStrategy.cs" />
     <Compile Include="ImageStrategy\IImageSaveStrategy.cs" />
+    <Compile Include="ImageStrategy\ImageConverter.cs" />
     <Compile Include="ImageStrategy\JpgStrategy.cs" />
     <Compile Include="ImageStrategy\PdfStrategy.cs" />
     <Compile Include="ImageStrategy\PngStrategy.cs" />
