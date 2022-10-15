@@ -1,0 +1,21 @@
+﻿<Window x:Class="StrategyPattern.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:StrategyPattern"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="800">
+    <StackPanel>
+        <Image Width="500"
+               Height="400"
+               Name="mainImage">
+
+        </Image>
+        <ComboBox Name="TypesCombobox" ItemsSource="{Binding Types}" Width="150"></ComboBox>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Name="LoadBtn" Width="120" Margin="40" Height="40" Click="LoadBtn_Click">LOAD</Button>
+            <Button Name="SaveBtn" Width="120" Margin="40" Height="40" Click="SaveBtn_Click">SAVE</Button>
+        </StackPanel>
+    </StackPanel>
+</Window>
