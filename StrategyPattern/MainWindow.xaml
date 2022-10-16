@@ -5,17 +5,74 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:StrategyPattern"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="800">
-    <StackPanel>
-        <Image Width="500"
-               Height="400"
-               Name="mainImage">
+        Title="Image Editor" Height="700" Width="1000">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1.4*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="150"/>
+        </Grid.RowDefinitions>
+        <StackPanel>
 
-        </Image>
-        <ComboBox Name="TypesCombobox" ItemsSource="{Binding Types}" Width="150"></ComboBox>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Image Width="500"
+               Height="400"
+               Name="mainImage"
+               Margin="0,50,0,30">
+            </Image>
+        </StackPanel>
+
+
+        <StackPanel Grid.Column="1" Margin="20" VerticalAlignment="Center">
+            <Label Content="Brightness" FontSize="14"/>
+            <Slider x:Name="BrightnessSlider" ValueChanged="UpdateImage" VerticalAlignment="Center" Value="0" IsSnapToTickEnabled="True" Minimum="-0.5" Maximum="0.5" LargeChange="0.1" SmallChange="0.01" TickFrequency="0.01" Margin="0,5,0,0"/>
+            <Label Content="Contrast" FontSize="14" Margin="0,20,0,0"/>
+            <Slider x:Name="ContrastSlider" ValueChanged="UpdateImage" VerticalAlignment="Center" Value="1" IsSnapToTickEnabled="True" Minimum="0" Maximum="2" LargeChange="0.2" TickFrequency="0.02" SmallChange="0.02" Margin="0,5,0,0"/>
+            <Label Content="Colour filter" FontSize="14" Margin="0,20,0,0"/>
+            <StackPanel Orientation="Horizontal" Margin="10,0,0,0">
+                <Grid Margin="0,0,5,0">
+                    <RadioButton Name="NoFilterRadio" Content="None" GroupName="FilterRadios" Margin="5" IsChecked="True" Click="UpdateImage"/>
+                </Grid>
+                <Grid Background="#64999999" Margin="0,0,5,0">
+                    <RadioButton Name="GrayscaleRadio" Content="Gray" GroupName="FilterRadios" Margin="5" Click="UpdateImage"/>
+                </Grid>
+                <Grid Background="#64eb3a34" Margin="0,0,5,0">
+                    <RadioButton Name="RedRadio" Content="Red" GroupName="FilterRadios" Margin="5" Click="UpdateImage"/>
+                </Grid>
+                <Grid Background="#6434eb49" Margin="0,0,5,0">
+                    <RadioButton Name="GreenRadio" Content="Green" GroupName="FilterRadios" Margin="5" Click="UpdateImage"/>
+                </Grid>
+                <Grid Background="#64347aeb">
+                    <RadioButton Name="BlueRadio" Content="Blue" GroupName="FilterRadios" Margin="5" Click="UpdateImage"/>
+                </Grid>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"
+                        VerticalAlignment="Center"
+                        Margin="0,20,0,0">
+
+                <Label Content="Rotation" FontSize="14" Margin="0,20,0,0"/>
+                <Button Margin ="80,0,20,0" Width="50" Height="50" Name="RotateAnticlockwiseBtn"  HorizontalAlignment="Left" Padding="20,5" Click="UpdateImage">
+                    <Button.Background>
+                        <ImageBrush ImageSource="Images/left.png"></ImageBrush>
+                    </Button.Background>
+                </Button>
+                <Button Width="50" Height="50" Name="RotateClockwiseBtn"  HorizontalAlignment="Left" Padding="20,5"  Click="UpdateImage">
+                    <Button.Background>
+                        <ImageBrush ImageSource="Images/right.png"></ImageBrush>
+                    </Button.Background>
+                </Button>
+            </StackPanel>
+        </StackPanel>
+
+
+        <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
+            <ComboBox Height="35" FontSize="22" Name="TypesCombobox" ItemsSource="{Binding Types}" Width="150"></ComboBox>
+
             <Button Name="LoadBtn" Width="120" Margin="40" Height="40" Click="LoadBtn_Click">LOAD</Button>
             <Button Name="SaveBtn" Width="120" Margin="40" Height="40" Click="SaveBtn_Click">SAVE</Button>
         </StackPanel>
-    </StackPanel>
+
+    </Grid>
 </Window>
